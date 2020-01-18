@@ -13,6 +13,7 @@
 /captures
 .externalNativeBuild
 .cxx
+proguard*
 
 # Built application files
 *.apk
