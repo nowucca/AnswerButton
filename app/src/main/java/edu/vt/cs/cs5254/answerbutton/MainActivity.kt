@@ -41,14 +41,14 @@ class MainActivity : AppCompatActivity() {
 
 		// set text in views
 		questionTextView.setText(R.string.australia_question)
-		for ((index, answerButton) in answerButtonList.withIndex()) {
-			answerButton.setText(answerList[index].textResId)
-		}
+		answerButtonList.forEachIndexed { index, btn ->
+			btn.setText(answerList[index].textResId) }
+
 		disableButton.setText(R.string.disable_button_text)
 		resetButton.setText(R.string.reset_button_text)
 
 		// attach listeners
-		for ((index, answerButton) in answerButtonList.withIndex()) {
+		answerButtonList.forEachIndexed { index, answerButton ->
 			answerButton.setOnClickListener {
 				processAnswerButtonClick(index)
 			}
@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
 	}
 
 	private fun refreshView() {
-		for ((index, answer) in answerList.withIndex()) {
+		answerList.forEachIndexed { index, answer ->
 			val button = answerButtonList[index]
 			if (answer.isEnabled) {
 				button.isEnabled = true
