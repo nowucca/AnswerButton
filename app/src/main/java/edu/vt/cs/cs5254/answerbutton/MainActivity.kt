@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 		Answer(R.string.australia_answer_brisbane, false),
 		Answer(R.string.australia_answer_canberra, true),
 		Answer(R.string.australia_answer_perth, false),
-		Answer(R.string.australia_answer_sidney, false)
+		Answer(R.string.australia_answer_sydney, false)
 	)
 
 	override fun onCreate(savedInstanceState: Bundle?) {

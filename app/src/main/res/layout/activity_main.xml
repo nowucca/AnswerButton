@@ -50,7 +50,7 @@
 			android:id="@+id/answer_3_button"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/australia_answer_sidney" />
+			android:text="@string/australia_answer_sydney" />
 	</LinearLayout>
 
 	<LinearLayout
@@ -68,14 +68,16 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
-			android:text="@string/disable_button_text" />
+			android:text="@string/disable_button_text"
+			style="?android:attr/buttonBarButtonStyle" />
 
 		<Button
 			android:id="@+id/reset_button"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
-			android:text="@string/reset_button_text" />
+			android:text="@string/reset_button_text"
+			style="?android:attr/buttonBarButtonStyle" />
 	</LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
