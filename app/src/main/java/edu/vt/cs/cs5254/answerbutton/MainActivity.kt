@@ -4,18 +4,16 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import edu.vt.cs.cs5254.answerbutton.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
 	private val defaultButtonColor = "#00a2ff"
 	private val selectedButtonColor = "#cb297b"
 
-	private lateinit var questionTextView: TextView
 	private lateinit var answerButtonList: List<Button>
-	private lateinit var disableButton: Button
-	private lateinit var resetButton: Button
+	private lateinit var binding: ActivityMainBinding
 
 	private val answerList = listOf(
 		Answer(R.string.australia_answer_brisbane, false),
@@ -26,26 +24,24 @@ class MainActivity : AppCompatActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_main)
+		binding = ActivityMainBinding.inflate(layoutInflater)
+		setContentView(binding.root)
 
 		// initialize views
-		questionTextView = findViewById(R.id.question_text_view)
 		answerButtonList = listOf(
-			findViewById(R.id.answer_0_button),
-			findViewById(R.id.answer_1_button),
-			findViewById(R.id.answer_2_button),
-			findViewById(R.id.answer_3_button)
+			binding.answer0Button,
+			binding.answer1Button,
+			binding.answer2Button,
+			binding.answer3Button
 		)
-		disableButton = findViewById(R.id.disable_button)
-		resetButton = findViewById(R.id.reset_button)
 
 		// set text in views
-		questionTextView.setText(R.string.australia_question)
+		binding.questionTextView.setText(R.string.australia_question)
 		answerButtonList.forEachIndexed { index, btn ->
 			btn.setText(answerList[index].textResId) }
 
-		disableButton.setText(R.string.disable_button_text)
-		resetButton.setText(R.string.reset_button_text)
+		binding.disableButton.setText(R.string.disable_button_text)
+		binding.resetButton.setText(R.string.reset_button_text)
 
 		// attach listeners
 		answerButtonList.forEachIndexed { index, answerButton ->
@@ -53,10 +49,10 @@ class MainActivity : AppCompatActivity() {
 				processAnswerButtonClick(index)
 			}
 		}
-		disableButton.setOnClickListener {
+		binding.disableButton.setOnClickListener {
 			processDisableButtonClick()
 		}
-		resetButton.setOnClickListener {
+		binding.resetButton.setOnClickListener {
 			processResetButtonClick()
 		}
 
@@ -90,7 +86,7 @@ class MainActivity : AppCompatActivity() {
 				}
 			}
 		}
-		disableButton.isEnabled = false
+		binding.disableButton.isEnabled = false
 		refreshView()
 	}
 
@@ -99,7 +95,7 @@ class MainActivity : AppCompatActivity() {
 			answer.isEnabled = true
 			answer.isSelected = false
 		}
-		disableButton.isEnabled = true
+		binding.disableButton.isEnabled = true
 		refreshView()
 	}
 
